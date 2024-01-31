@@ -1,0 +1,559 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+         
+        {
+            "name": "train 360",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/360.gin",
+                "--gin_bindings", "Config.data_dir = '/home/user/lcyGP/multinerf/datasets/nerf_real_360/pinecone'",
+                "--gin_bindings", "Config.checkpoint_dir = '/home/user/lcyGP/multinerf/nerf_results/360-t/pinecone'",
+                "--gin_bindings", "Config.batch_size = 1024",
+                "--logtostderr",
+            ],
+            "program": "train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "train union NewYork 2",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/union.gin",
+                "--gin_bindings", "Config.data_dir = './dataset/NewYork_2_26items_of_tails'",
+                "--gin_bindings", "Config.checkpoint_dir = './final_union_result/NewYork2_26_union_1'",
+                "--gin_bindings", "Config.batch_size = 2048",
+                "--logtostderr",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "program": "train_union.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "reset step",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/real.gin",
+                "--gin_bindings", "Config.data_dir = '/home/user/lcyGP/multinerf/datasets/real_data/'",
+                "--gin_bindings", "Config.checkpoint_dir = '/home/user/lcyGP/multinerf/nerf_results/my_real_10/'",
+                "--gin_bindings", "Config.batch_size = 4096",
+                "--logtostderr",
+            ],
+            "program": "reset_step.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "render 360",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/360.gin",
+                "--gin_bindings", "Config.data_dir = '/home/user/lcyGP/multinerf/datasets/nerf_real_360/pinecone'",
+                "--gin_bindings", "Config.checkpoint_dir = '/home/user/lcyGP/multinerf/nerf_results/360/pinecone'",
+                "--gin_bindings", "Config.render_path_frames = 30",
+                "--gin_bindings", "Config.render_dir = '/home/user/lcyGP/multinerf/nerf_results/render_360/'",
+                "--gin_bindings", "Config.render_video_fps = 5",
+                "--logtostderr",
+            ],
+            "program": "render.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "render real",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/real.gin",
+                "--gin_bindings", "Config.data_dir = '/home/user/lcyGP/multinerf/datasets/real_data/nerf1'",
+                "--gin_bindings", "Config.checkpoint_dir = '/home/user/lcyGP/multinerf/nerf_results/my_real_10/'",
+                "--gin_bindings", "Config.render_path = False",
+                "--gin_bindings", "Config.render_path_frames = 10",
+                "--gin_bindings", "Config.render_dir = '/home/user/lcyGP/multinerf/nerf_results/render_real/nerf1'",
+                "--gin_bindings", "Config.render_video_fps = 2",
+                "--logtostderr",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "3"
+            },
+            "program": "render.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "render real 400_600",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/real.gin",
+                "--gin_bindings", "Config.data_dir = '/data/yexy/From_external/multinerf/datasets/nerf1'",
+                "--gin_bindings", "Config.checkpoint_dir = '/data/yexy/From_external/multinerf/nerf_results/my_real_10/nerf1'",
+                "--gin_bindings", "Config.render_path = False",
+                "--gin_bindings", "Config.render_path_frames = 10",
+                "--gin_bindings", "Config.render_dir = '/data/yexy/From_external/multinerf/nerf_results/my_real_10/nerf1/renderreal'",
+                "--gin_bindings", "Config.render_video_fps = 2",
+                "--logtostderr",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "3"
+            },
+            "program": "render.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "render w/ alpha",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/360.gin",
+                "--gin_bindings", "Config.data_dir = '/home/user/lcyGP/multinerf/datasets/real_data/nerf1'",
+                "--gin_bindings", "Config.checkpoint_dir = '/home/user/lcyGP/multinerf/nerf_results/my_real_10/'",
+                "--gin_bindings", "Config.render_path = False",
+                "--gin_bindings", "Config.render_path_frames = 10",
+                "--gin_bindings", "Config.render_dir = '/home/user/lcyGP/multinerf/nerf_results/render_real_alpha/nerf1'",
+                "--gin_bindings", "Config.render_video_fps = 2",
+                "--logtostderr",
+            ],
+            "program": "render_alpha.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "generate obs",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/360.gin",
+                "--gin_bindings", "Config.data_dir = '/home/user/lcyGP/multinerf/datasets/nerf_real_360/pinecone'",
+                "--gin_bindings", "Config.render_dir = '/home/user/lcyGP/multinerf/obs/pinecone/'",
+                "--logtostderr",
+            ],
+            "program": "gen_obs.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "localization",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/360.gin",
+                "--gin_bindings", "Config.data_dir = '/home/user/lcyGP/multinerf/datasets/nerf_real_360/pinecone'",
+                "--gin_bindings", "Config.checkpoint_dir = '/home/user/lcyGP/multinerf/nerf_results/360/pinecone'",
+                "--gin_bindings", "Config.render_path = False",
+                "--gin_bindings", "Config.render_path_frames = 10",
+                "--gin_bindings", "Config.render_dir = '/home/user/lcyGP/multinerf/nerf_results/localization/pinecone/'",
+                "--gin_bindings", "Config.render_video_fps = 2",
+                "--logtostderr",
+            ],
+            "program": "localization.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "localization real nerf1 ",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/pose.gin",
+                "--gin_bindings", "Config.data_dir = '/data/yexy/From_external/multinerf/datasets/nerf1'",
+                "--gin_bindings", "Config.checkpoint_dir = '/data/yexy/From_external/multinerf/nerf_results/my_real_10/nerf1'",
+                "--gin_bindings", "Config.render_path = False",
+                "--gin_bindings", "Config.render_dir = '/data2/yexy/multinerf/multinerf/nerf_results/localization/real_16/nerf1'",
+                "--gin_bindings", "Config.render_path_frames = 10",
+                "--gin_bindings", "Config.render_video_fps = 2",
+                "--logtostderr",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "3"
+            },
+            "program": "localization.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "localization real nerf2",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/pose.gin",
+                "--gin_bindings", "Config.data_dir = '/home/user/lcyGP/multinerf/datasets/real_data/nerf2'",
+                "--gin_bindings", "Config.checkpoint_dir = '/home/user/lcyGP/multinerf/nerf_results/my_real_10/nerf2'",
+                "--gin_bindings", "Config.render_path = False",
+                "--gin_bindings", "Config.render_dir = '/home/user/lcyGP/multinerf/nerf_results/localization_real/nerf2'",
+                "--gin_bindings", "Config.render_path_frames = 10",
+                "--gin_bindings", "Config.render_video_fps = 2",
+                "--logtostderr",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "3"
+            },
+            "program": "localization.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "localization real nerf1 600_400",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/pose_600_400.gin",
+                "--gin_bindings", "Config.data_dir = '/home/user/lcyGP/multinerf/datasets/real_data_2'",
+                "--gin_bindings", "Config.checkpoint_dir = '/home/user/lcyGP/multinerf/nerf_results/real_data600_400'",
+                "--gin_bindings", "Config.render_path = False",
+                "--gin_bindings", "Config.render_dir = '/home/user/lcyGP/multinerf/nerf_results/localization_real/nerf1/600_400'",
+                "--gin_bindings", "Config.render_path_frames = 10",
+                "--gin_bindings", "Config.render_video_fps = 2",
+                "--logtostderr",
+            ],
+            "program": "localization.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "fusion",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/pose_fusion.gin",
+                "--gin_bindings", "Config.data_dir1 = '/data/yexy/From_external/multinerf/datasets/nerf1'",
+                "--gin_bindings", "Config.data_dir2 = '/data/yexy/From_external/multinerf/datasets/nerf1'",
+                "--gin_bindings", "Config.checkpoint_dir1 = '/data/yexy/From_external/multinerf/nerf_results/my_real_10/nerf1/'",
+                "--gin_bindings", "Config.checkpoint_dir2 = '/data/yexy/From_external/multinerf/nerf_results/my_real_10/nerf2/'",
+                "--gin_bindings", "Config.render_path = False",
+                "--gin_bindings", "Config.render_dir = '/data/yexy/From_external/multinerf/nerf_results/fusion/13/'",
+                "--gin_bindings", "Config.render_path_frames = 10",
+                "--gin_bindings", "Config.render_video_fps = 2",
+                "--logtostderr",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+            "program": "fusion.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+          "name": "localization_fusion_nyk_13",
+          "type": "python",
+          "request": "launch",
+          "args": [
+              "--gin_configs", "configs/pose_fusion_sim.gin",
+              "--gin_bindings", "Config.data_dir1 = './dataset/distributed_nerf/NewYork/1'",
+              "--gin_bindings", "Config.data_dir2 = './dataset/distributed_nerf/NewYork/3'",
+              "--gin_bindings", "Config.checkpoint_dir1 = './nerf_result/final/NewYork1'",
+              "--gin_bindings", "Config.checkpoint_dir2 = './nerf_result/final/NewYork3'",
+              "--gin_bindings", "Config.render_path = False",
+              "--gin_bindings", "Config.render_dir = './final_loc_result/nyk1_3/T12'",
+              "--gin_bindings", "Config.render_path_frames = 10",
+              "--gin_bindings", "Config.render_video_fps = 2",
+              "--logtostderr",
+          ],
+          "env": {
+              "CUDA_VISIBLE_DEVICES": "0"
+          }, 
+          "program": "localization_fusion.py",
+          "console": "integratedTerminal",
+          "justMyCode": true
+        },
+
+          {
+            "name": "localization_fusion_nyk_12",
+            "type": "python",
+            "request": "launch",
+            "args": [
+                "--gin_configs", "configs/pose_fusion_sim.gin",
+                "--gin_bindings", "Config.data_dir1 = './dataset/distributed_nerf/NewYork/1'",
+                "--gin_bindings", "Config.data_dir2 = './dataset/distributed_nerf/NewYork/2'",
+                "--gin_bindings", "Config.checkpoint_dir1 = './nerf_result/final/NewYork1'",
+                "--gin_bindings", "Config.checkpoint_dir2 = './nerf_result/final/NewYork2'",
+                "--gin_bindings", "Config.render_path = False",
+                "--gin_bindings", "Config.render_dir = './final_loc_result/nyk1_2/T12'",
+                "--gin_bindings", "Config.render_path_frames = 10",
+                "--gin_bindings", "Config.render_video_fps = 2",
+                "--logtostderr",
+            ],
+            "env": {
+                "CUDA_VISIBLE_DEVICES": "0"
+            },
+          "program": "localization_fusion.py",
+          "console": "integratedTerminal",
+          "justMyCode": true
+        },
+        {
+        "name": "localization_fusion_big_45_84",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "./configs/pose_fusion.gin",
+            "--gin_bindings", "Config.data_dir1 = './dataset/real_45/nerf1'",
+            "--gin_bindings", "Config.data_dir2 = './dataset/real_84'",
+            "--gin_bindings", "Config.checkpoint_dir1 = './nerf_result/real45_66/nerf1'",
+            "--gin_bindings", "Config.checkpoint_dir2 = './Checkpoints/real_84'",
+            "--gin_bindings", "Config.render_path = False",
+            "--gin_bindings", "Config.render_dir = './nerf_result/real45_84/T12_samejpg'",
+            "--gin_bindings", "Config.render_path_frames = 10",
+            "--gin_bindings", "Config.render_video_fps = 2",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "./localization_fusion.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "localization reoptim sim NewYork_13 ",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/pose_fusion_sim.gin",
+              "--gin_bindings", "Config.data_dir1 = './dataset/distributed_nerf/NewYork/1'",
+              "--gin_bindings", "Config.data_dir2 = './dataset/distributed_nerf/NewYork/3'",
+              "--gin_bindings", "Config.checkpoint_dir1 = './nerf_result/final/NewYork1'",
+              "--gin_bindings", "Config.checkpoint_dir2 = './nerf_result/final/NewYork3'",
+              "--gin_bindings", "Config.render_path = False",
+              "--gin_bindings", "Config.render_dir = './final_loc_result/nyk1_3/T2'",
+              "--gin_bindings", "Config.render_path_frames = 10",
+              "--gin_bindings", "Config.render_video_fps = 2",
+              "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "localization_re_sim.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "localization reoptim sim NewYork_12 ",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/pose_fusion_sim.gin",
+              "--gin_bindings", "Config.data_dir1 = './dataset/distributed_nerf/NewYork/1'",
+              "--gin_bindings", "Config.data_dir2 = './dataset/distributed_nerf/NewYork/2'",
+              "--gin_bindings", "Config.checkpoint_dir1 = './nerf_result/final/NewYork1'",
+              "--gin_bindings", "Config.checkpoint_dir2 = './nerf_result/final/NewYork2'",
+              "--gin_bindings", "Config.render_path = False",
+              "--gin_bindings", "Config.render_dir = './final_loc_result/nyk1_2/T2'",
+              "--gin_bindings", "Config.render_path_frames = 10",
+              "--gin_bindings", "Config.render_video_fps = 2",
+              "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "localization_re_sim.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "fusion Ray",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/pose_fusion.gin",
+            "--gin_bindings", "Config.data_dir1 = './dataset/real_45/nerf2'",
+            "--gin_bindings", "Config.data_dir2 = './dataset/real_84'",
+            "--gin_bindings", "Config.checkpoint_dir1 = './Checkpoints/real_45'",
+            "--gin_bindings", "Config.checkpoint_dir2 = './Checkpoints/real_84'",
+            "--gin_bindings", "Config.render_path = False",
+            "--gin_bindings", "Config.render_dir = './final_result/fusion_real/lcy_t1'",
+            "--gin_bindings", "Config.render_path_frames = 10",
+            "--gin_bindings", "Config.render_video_fps = 2",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "Fusion_Ray.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "fusion Ray sim_old_13",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/pose_fusion_sim.gin",
+            "--gin_bindings", "Config.data_dir1 = './dataset/distributed_nerf/NewYork/1'",
+            "--gin_bindings", "Config.data_dir2 = './dataset/distributed_nerf/NewYork/3'",
+            "--gin_bindings", "Config.checkpoint_dir1 = './nerf_result/final/NewYork1'",
+            "--gin_bindings", "Config.checkpoint_dir2 = './nerf_result/final/NewYork3'",
+            "--gin_bindings", "Config.render_path = False",
+            "--gin_bindings", "Config.render_dir = './final_result/fusion_sim'",
+            "--gin_bindings", "Config.render_path_frames = 10",
+            "--gin_bindings", "Config.render_video_fps = 2",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "Fusion_Ray_old.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "fusion Ray sim_old_12",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/pose_fusion_sim.gin",
+            "--gin_bindings", "Config.data_dir1 = './dataset/distributed_nerf/NewYork/1'",
+            "--gin_bindings", "Config.data_dir2 = './dataset/distributed_nerf/NewYork/2'",
+            "--gin_bindings", "Config.checkpoint_dir1 = './nerf_result/final/NewYork1'",
+            "--gin_bindings", "Config.checkpoint_dir2 = './nerf_result/final/NewYork2'",
+            "--gin_bindings", "Config.render_path = False",
+            "--gin_bindings", "Config.render_dir = './final_result/NY12'",
+            "--gin_bindings", "Config.render_path_frames = 10",
+            "--gin_bindings", "Config.render_video_fps = 2",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "Fusion_Ray_old.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "fusion Ray sim_new_12",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/pose_fusion_sim.gin",
+            "--gin_bindings", "Config.data_dir1 = './dataset/distributed_nerf/NewYork/1'",
+            "--gin_bindings", "Config.data_dir2 = './dataset/distributed_nerf/NewYork/2'",
+            "--gin_bindings", "Config.checkpoint_dir1 = './nerf_result/final/NewYork1'",
+            "--gin_bindings", "Config.checkpoint_dir2 = './nerf_result/final/NewYork2'",
+            "--gin_bindings", "Config.render_path = False",
+            "--gin_bindings", "Config.render_dir = './final_result/NY12_filter'",
+            "--gin_bindings", "Config.render_path_frames = 10",
+            "--gin_bindings", "Config.render_video_fps = 2",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "Fusion_Ray.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "train sim",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/real.gin",
+            "--gin_bindings", "Config.data_dir = './dataset/distributed_nerf/NewYork/2'",
+            "--gin_bindings", "Config.checkpoint_dir = './nerf_result/final/NewYork2'",
+            "--gin_bindings", "Config.batch_size = 4096",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "train.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "render ours sim NewYork2",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/real.gin",
+            "--gin_bindings", "Config.data_dir = './dataset/distributed_nerf/NewYork/2'",
+            "--gin_bindings", "Config.checkpoint_dir = './nerf_result/final/NewYork2'",
+            "--gin_bindings", "Config.render_path = False",
+            "--gin_bindings", "Config.render_path_frames = 10",
+            "--gin_bindings", "Config.render_dir = './output/render_ours_sim/NewYork3_ours'",
+            "--gin_bindings", "Config.render_video_fps = 2",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "render.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "ablation",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/real.gin",
+            "--gin_bindings", "Config.data_dir = './dataset/distributed_nerf/NewYork/2'",
+            "--gin_bindings", "Config.checkpoint_dir = './nerf_result/final/NewYork2'",
+            "--gin_bindings", "Config.render_path = False",
+            "--gin_bindings", "Config.render_path_frames = 10",
+            "--gin_bindings", "Config.render_dir = './output/ablation/NewYork3_ours'",
+            "--gin_bindings", "Config.render_video_fps = 2",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "render.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+    },
+    {
+        "name": "barf",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/pose_reoptimize.gin",
+            "--gin_bindings", "Config.data_dir = '/data2/yexy/multinerf/multinerf/datasets/real_45/nerf1'",
+            "--gin_bindings", "Config.checkpoint_dir = '/data2/yexy/multinerf/multinerf/nerf_results/nerf1'",
+            "--gin_bindings", "Config.render_path = False",
+            "--gin_bindings", "Config.render_dir = '/data2/yexy/multinerf/multinerf/nerf_results/localization_fusion/real_45/nerf1'",
+            "--gin_bindings", "Config.render_path_frames = 10",
+            "--gin_bindings", "Config.render_video_fps = 2",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "train_union.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+      },
+    {
+        "name": "load_pose",
+        "type": "python",
+        "request": "launch",
+        "args": [
+            "--gin_configs", "configs/union.gin",
+            "--gin_bindings", "Config.data_dir = './dataset/NewYork_2_26items_of_tails'",
+            "--gin_bindings", "Config.checkpoint_dir = './final_union_result/NewYork2_26_union_1'",
+            "--gin_bindings", "Config.batch_size = 2048",
+            "--logtostderr",
+        ],
+        "env": {
+            "CUDA_VISIBLE_DEVICES": "0"
+        },
+        "program": "load_pose.py",
+        "console": "integratedTerminal",
+        "justMyCode": true
+      },
+       
+    ]
+}
+

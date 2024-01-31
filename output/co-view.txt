@@ -1,0 +1,41 @@
+/home/air/multinerf/dataset/distributed_nerf/NewYork/1/images/1693674292.122168.png is most similar to /home/air/multinerf/dataset/di
+stributed_nerf/NewYork/2/images/1693674963.565813.png with a distance of 59.2429
+
+
+
+
+
+73
+/home/air/multinerf/dataset/distributed_nerf/NewYork/1/images/1693674286.8030546.png is
+ most similar to /home/air/multinerf/dataset/distributed_nerf/NewYork/2/images
+ /1693674959.5637276.png with a distance of 72.7588
+99
+
+/home/air/multinerf/dataset/distributed_nerf/NewYork/1/images/1693674287.0730603.png is most similar to
+ /home/air/multinerf/dataset/distributed_nerf/NewYork/3/images/1693676282.6059651.png with a distance of 72.2974
+
+
+home/air/multinerf/dataset/distributed_nerf/NewYork/2/images/
+1693674956.911671.png is most similar to 
+/home/air/multinerf/dataset/distributed_nerf/NewYork/3/images/
+1693676281.7359464.png with a distance of 56.2937
+
+/home/air/multinerf/dataset/distributed_nerf/NewYork/2/images/
+1693674957.100675.png is most similar to 
+/home/air/multinerf/dataset/distributed_nerf/NewYork/3/images/
+1693676281.7359464.png with a distance of 66.6787
+
+/media/air/PortableSSD/nerf45_16/45images/51.JPG is most similar to /media/air/PortableSSD/nerf45_16/16images/12.JPG with a distance of 0.0000
+/media/air/PortableSSD/nerf45_16/45images/53.JPG is most similar to /media/air/PortableSSD/nerf45_16/16images/14.JPG with a distance of 0.0000
+/media/air/PortableSSD/nerf45_16/45images/55.JPG is most similar to /media/air/PortableSSD/nerf45_16/16images/16.JPG with a distance of 0.0000
+
+/home/air/multinerf/dataset/distributed_nerf/NewYork/2/images/1693674933.7301764.png i
+s most similar to /home/air/multinerf/dataset/distributed_nerf/NewYork/3/images/1693676245.564175.png with a distance of 98.3744
+
+/home/air/multinerf/dataset/distributed_nerf/NewYork/2/images/1693674933.5441725.png 
+is most similar to /home/air/multinerf/dataset/distributed_nerf/NewYork/3/images/1693676241.964098.png with a distance of 78.5408
+
+73
+/home/air/multinerf/dataset/distributed_nerf/NewYork/1/images/1693674286.866056.png 
+is most similar to /home/air/multinerf/dataset/distributed_nerf/NewYork/2/images/1693674933.3371682.png with a distance of 61.8474
+172

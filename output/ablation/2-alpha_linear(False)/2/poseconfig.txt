@@ -1,0 +1,16 @@
+render_train=True
+batch_size=4096
+patch_size=1
+max_steps=1000
+lr_init=0.01
+lr_final=0.006
+sampling_strategy=random
+with_filter=True
+optim_method=manifold
+alpha0=0.6
+delta_phi=0.0
+delta_theta=0.0
+delta_psi=0.0
+delta_x=0.5
+delta_y=0.0
+delta_z=0.0

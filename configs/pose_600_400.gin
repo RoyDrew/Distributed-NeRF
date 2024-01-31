@@ -1,0 +1,39 @@
+Config.dataset_loader = 'llff'
+Config.near = 0.2
+Config.far = 1e6
+Config.factor = 2 ##
+
+Config.batch_size = 4096
+Config.batching = 'single_image'
+Config.cast_rays_in_train_step = True
+Config.llff_use_all_images_for_training = True
+Config.pose_sampling_strategy = 'random'
+Config.pose_lr_init = 0.005
+Config.pose_lr_final = 0.002
+Config.pose_max_steps = 5000
+Config.pose_delta_phi = 0.
+Config.pose_delta_theta = 0.
+Config.pose_delta_psi = 0.
+Config.pose_delta_x = 0.0
+Config.pose_delta_y = 0.0
+Config.pose_delta_z = -0.25
+Config.pose_w_alpha = True
+Config.pose_optim_method = 'manifold'
+Config.pose_alpha0 = 0.6
+Config.pose_alpha_linear = True
+Config.pose_exam_id = 10
+Config.pose_render_train = True
+
+Model.raydist_fn = @jnp.reciprocal
+Model.opaque_background = True
+
+PropMLP.warp_fn = @coord.contract
+PropMLP.net_depth = 4
+PropMLP.net_width = 256
+PropMLP.disable_density_normals = True
+PropMLP.disable_rgb = True
+
+NerfMLP.warp_fn = @coord.contract
+NerfMLP.net_depth = 8
+NerfMLP.net_width = 1024
+NerfMLP.disable_density_normals = True
